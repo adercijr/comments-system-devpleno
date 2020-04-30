@@ -1,0 +1,9 @@
+.Comments {
+    height: 250px!important;
+}
+
+@media (max-width: 600px) {
+    .Comments {
+        height: 350px!important;
+    }
+  }
