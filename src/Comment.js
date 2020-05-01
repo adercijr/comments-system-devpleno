@@ -3,7 +3,10 @@ import React from 'react'
 const Comment = ({c}) => {    
         return (            
                 <div>                    
-                 <strong>{c.name}: </strong>{c.comment}
+                 <strong>{c.email}:
+                 <br></br>
+                </strong>{c.comment}
+                <hr></hr>
                 </div>           
         )    
 }
