@@ -4,6 +4,9 @@ import NewComment from './NewComment'
 import './App.css'
 import Login from './Login'
 import User from './User'
+import './App.css'
+import $ from 'jquery'
+
 
 class App extends Component {
   state = {
@@ -62,8 +65,15 @@ class App extends Component {
     const { auth } = this.props
     auth.signOut()
   }
+   
+  rollPage() {
 
-  componentDidMount() {
+    setTimeout(function() {
+      $( "div.Comments" ).scrollTop( 30000 )
+    }, 2000)       
+  }
+
+  componentDidMount() {        
     const { database, auth } = this.props
     this.setState({ isLoading: true })
     this.comments = database.ref('comments')
@@ -87,39 +97,40 @@ class App extends Component {
         })
       }
     })
+    this.rollPage()
+    
   }
  
   render() {
-    return (           
-      <div className="bg-info">
+    return (
       
-          <div className="container App rounded">
+          <div className="grid-container">
 
-                <h1>Comments System</h1>
+                <div className="Signin p-3">
+                  <h2>Comments System</h2>
+                  {this.state.isAuth && <User email={this.state.user.email} logout={this.logout}/>}
+                  {!this.state.isAuth && <Login login={this.login} isAuthError={this.state.isAuthError}
+                    authError={this.state.authError} userRegister={this.userRegister}/>}
+                </div>
 
-                  <div className="row bg-light justify-content-center">
-                      <div className="col-md-10 col-sm-12 mb-3">
-                        
-                        {this.state.isAuth && <User email={this.state.user.email} logout={this.logout}/>}
-                        {!this.state.isAuth && <Login login={this.login} isAuthError={this.state.isAuthError}
-                          authError={this.state.authError} userRegister={this.userRegister}/>}
-                        {this.state.isAuth && <NewComment sendComment={this.sendComment} />}                       
 
-                      </div>
-                  </div>
+                <div className="Comments">
+                    
+                    <Comments comments={this.state.comments}/>                   
+                  
+                    { 
+                      this.state.isLoading && <p className="text-center mt-5">Carregando...</p> 
+                    }                                                 
+                </div>
 
-                  <div className="row bg-white justify-content-center p-3">
-                      
-                        <Comments comments={this.state.comments}/>
-
-                        { 
-                          this.state.isLoading && <p>Carregando...</p> 
-                        }        
-                      
-                  </div>  
-
+                <div className="NewComent">               
+                     
+                     {this.state.isAuth && <NewComment sendComment={this.sendComment} />}                     
+                </div>                                
+                
+              
           </div>
-          </div>
+         
       
     )
   }

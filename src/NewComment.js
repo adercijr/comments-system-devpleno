@@ -33,27 +33,22 @@ export default class NewComment extends Component {
 
     render() {
         return (
-            <div className="p-1">
-            <form>
-                <div>                    
-                    <div className="row">
-                        <textarea className="form-control" id="exampleFormControlTextarea1" rows="5" cols="100"
-                            placeholder="Digite uma mensagem"
-                            value={this.state.newComment} onChange={this.handleChange}>
-                        </textarea>                    
-                    </div>
-                </div>
-            </form>
-            <div className="d-flex">
-                        <div className="flex-grow-1 d-flex flex-column justify-content-end">
-                            { this.state.error && <p className="text-danger">Write a valid message!</p> }
-                            { this.state.success && <p className="text-success">
-                            Message sent successfully!</p> }
+            <div className="pr-3 pl-3 align-items-center">
+                <form>                       
+                        <div className="form-row justify-content-between align-items-end">
+                            <div className="col-9 col-sm-10 col-lg-11">
+                                <textarea className="form-control" id="exampleFormControlTextarea1" rows="1"
+                                    placeholder="Write a message"
+                                    value={this.state.newComment} onChange={this.handleChange}>
+                                </textarea>                  
+                            </div>
+                            <div className="col-1">                              
+                                <button className="btn btn-dark mt-3 float-right" onClick={this.sendComment}>Submit</button> 
+                            </div>
                         </div>
-                        <button className="btn btn-dark mt-3 float-right" onClick={this.sendComment}>Submit</button> 
-            </div>
-            </div>
-            
+                   
+                </form>                                 
+            </div>            
         )
     }
 }

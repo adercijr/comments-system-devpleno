@@ -1,9 +1,5 @@
 .Comments {
-    height: 250px!important;
+    max-height: 100%;
+    overflow: auto;
 }
 
-@media (max-width: 600px) {
-    .Comments {
-        height: 350px!important;
-    }
-  }

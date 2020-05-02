@@ -43,8 +43,8 @@ class Login extends Component {
 
     return (
         <div>            
-            <p className="mt-2">
-                <button className="btn btn-success btn-sm mt-4 " type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            <p>
+                <button className="btn btn-success btn-sm m-1 " type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                     Sign in / Register
                 </button>
             </p>
