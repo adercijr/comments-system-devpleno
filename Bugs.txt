@@ -1,0 +1,3 @@
+TIRAR O componentDidMounted  DO ARQUIVO APP
+
+POIS O ao postar comentarios está renderizando a pagina novamente
